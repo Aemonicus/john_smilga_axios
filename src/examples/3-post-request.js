@@ -3,12 +3,17 @@ import axios from 'axios';
 const url = 'https://course-api.com/axios-tutorial-post';
 
 const PostRequest = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [ name, setName ] = useState('');
+  const [ email, setEmail ] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(name, email);
+    try {
+      const response = await axios.post(url, { name, email })
+      console.log("🚀 ~ file: 3-post-request.js:13 ~ handleSubmit ~ response", response)
+    } catch (error) {
+      console.log(error.response)
+    }
   };
 
   return (
